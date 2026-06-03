@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 function Home() {
 
-    const [task, setTask] = useState([])
+    const [tasks, setTask] = useState([])
 
     return (
         <div className="home">
@@ -10,7 +10,7 @@ function Home() {
             {task.length === 0 ? (
                 <p>You have no tasks</p>
             ) : (
-                task.map(todo => (
+                tasks.map(todo => (
                     <div>
                         {todo}
                     </div>
