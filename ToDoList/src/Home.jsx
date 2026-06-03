@@ -7,7 +7,7 @@ function Home() {
     return (
         <div className="home">
             <h1>Todo List</h1>
-            {task.length === 0 ? (
+            {tasks.length === 0 ? (
                 <p>You have no tasks</p>
             ) : (
                 tasks.map(todo => (
