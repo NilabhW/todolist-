@@ -28,11 +28,11 @@ function Home() {
 
                     <div className='task'>
                         <div className='checkbox' onClick={() => handleEdit(todo._id)}>
-                            {todo.done ? <BsFillCheckCircleFill className='icon'></BsFillCheckCircleFill>
-                                :
-                                <BsCircleFill className='icon'></BsCircleFill>}
+                            {todo.done
+                                ? <BsFillCheckCircleFill className='icon checked' />
+                                : <BsCircleFill className='icon' />}
 
-                            <p className={todo.done ? "line_through" : ""}> {todo.task}</p>
+                            <p className={todo.done ? "line_through" : ""}>{todo.task}</p>
                         </div>
                         <div>
                             <span><BsFillTrashFill className='icon' onClick={() => handleDelete(todo._id)}></BsFillTrashFill></span>
