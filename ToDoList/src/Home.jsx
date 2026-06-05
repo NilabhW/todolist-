@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { BsCircleFill, BsFillTrashFill } from 'react-icons/bs'
+import { BsCircleFill, BsFillTrashFill, BsFillCheckCircleFill } from 'react-icons/bs'
 
 function Home() {
 
@@ -8,6 +8,15 @@ function Home() {
     useEffect(() => {
         axios.get('http://localhost:3001/get').then(result => setTask(result.data)).catch(err => console.log(err))
     }, [])
+
+    const handleEdit = (id) => {
+        axios.put('http://localhost:3001/update/' + id).then(result => location.reload()).catch(err => console.log(err))
+    }
+
+    const handleDelete = (id) => {
+        axios.delete('http://localhost:3001/delete/' + id).then(result => location.reload()).catch(err => console.log(err))
+    }
+
 
     return (
         <div className="home">
@@ -18,12 +27,15 @@ function Home() {
                 tasks.map(todo => (
 
                     <div className='task'>
-                        <div className='checkbox'>
-                            <BsCircleFill className='icon'></BsCircleFill>
-                            <p> {todo.task}</p>
+                        <div className='checkbox' onClick={() => handleEdit(todo._id)}>
+                            {todo.done ? <BsFillCheckCircleFill className='icon'></BsFillCheckCircleFill>
+                                :
+                                <BsCircleFill className='icon'></BsCircleFill>}
+
+                            <p className={todo.done ? "line_through" : ""}> {todo.task}</p>
                         </div>
                         <div>
-                            <span><BsFillTrashFill className='icon'></BsFillTrashFill></span>
+                            <span><BsFillTrashFill className='icon' onClick={() => handleDelete(todo._id)}></BsFillTrashFill></span>
                         </div>
 
 
