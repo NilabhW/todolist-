@@ -8,8 +8,10 @@ function App() {
 
   return (
     <div>
-      <Home />
+      <h1>Todo List</h1>
       <Create />
+      <Home />
+
     </div>
   )
 
